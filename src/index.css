@@ -8,35 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Sunset Ember Design System */
+    --bg-obsidian: 220 25% 6.5%;
+    --surface-graphite: 218 24% 9.8%;
+    --surface-elevated: 216 22% 12%;
+    
+    --ember-500: 24 100% 50%;
+    --ember-600: 24 100% 45%;
+    --ember-glow: 24 100% 70%;
+    --sun-gold: 42 100% 65%;
+    --rose-glow: 8 100% 72%;
+    
+    --text-hero: 36 33% 96%;
+    --text-dim: 220 9% 70%;
+    --text-muted: 220 9% 55%;
+    --ok-mint: 154 76% 76%;
+    
+    /* Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--ember-500)), hsl(var(--sun-gold)), hsl(var(--rose-glow)));
+    --gradient-afterglow: radial-gradient(ellipse at center, hsl(220 25% 8%), hsl(var(--surface-graphite)));
+    --gradient-ember: linear-gradient(90deg, hsl(var(--ember-500)), hsl(var(--sun-gold)));
+    
+    /* Shadows */
+    --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.35);
+    --shadow-glow: 0 0 20px rgba(255, 122, 0, 0.25);
+    --shadow-ember: 0 0 0 1px rgba(255, 193, 77, 0.35);
+    
+    /* Semantic tokens */
+    --background: var(--bg-obsidian);
+    --foreground: var(--text-hero);
+    --card: var(--surface-graphite);
+    --card-foreground: var(--text-hero);
+    --popover: var(--surface-elevated);
+    --popover-foreground: var(--text-hero);
+    --primary: var(--ember-500);
+    --primary-foreground: 220 25% 8%;
+    --secondary: var(--surface-elevated);
+    --secondary-foreground: var(--text-hero);
+    --muted: var(--surface-elevated);
+    --muted-foreground: var(--text-muted);
+    --accent: var(--surface-elevated);
+    --accent-foreground: var(--text-hero);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--text-hero);
+    --border: 220 25% 15%;
+    --input: var(--surface-elevated);
+    --ring: var(--sun-gold);
+    --radius: 1.25rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +74,9 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark theme inherits the same Sunset Ember tokens */
+    --background: var(--bg-obsidian);
+    --foreground: var(--text-hero);
   }
 }
 
@@ -99,7 +85,78 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    color-scheme: dark;
+  }
+
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-afterglow), hsl(var(--bg-obsidian));
+    background-attachment: fixed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl;
+    background: var(--gradient-ember);
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--sun-gold) / 0.35);
+    box-shadow: var(--shadow-ember), var(--shadow-soft);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    filter: saturate(1.05);
+    box-shadow: var(--shadow-ember), var(--shadow-glow), var(--shadow-soft);
+  }
+  
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-xl;
+    background: transparent;
+    color: hsl(var(--text-hero));
+    border: 1px solid hsl(var(--sun-gold) / 0.25);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-ghost:hover {
+    background: hsl(var(--surface-elevated) / 0.5);
+    border-color: hsl(var(--sun-gold) / 0.5);
+  }
+  
+  .card-ember {
+    @apply rounded-xl p-6;
+    background: color-mix(in oklab, hsl(var(--surface-graphite)) 85%, #2A1205 15%);
+    border: 1px solid hsl(var(--sun-gold) / 0.15);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-ember:hover {
+    box-shadow: var(--shadow-soft), 0 0 20px hsl(var(--ember-500) / 0.15);
+    border-color: hsl(var(--sun-gold) / 0.3);
+  }
+  
+  .tab {
+    @apply px-4 py-2 text-sm font-medium rounded-full transition-all duration-200;
+    background: hsl(var(--surface-elevated));
+    color: hsl(var(--text-dim));
+  }
+  
+  .tab.active {
+    background: linear-gradient(90deg, #241107, #1A1915);
+    color: hsl(var(--text-hero));
+    box-shadow: inset 0 0 0 1px hsl(var(--sun-gold) / 0.25);
+  }
+  
+  .countdown-ring {
+    stroke: hsl(var(--ember-500));
+    filter: drop-shadow(0 0 10px hsl(var(--ember-500) / 0.4));
+  }
+  
+  .stake-slider {
+    accent-color: hsl(var(--ember-500));
   }
 }

@@ -47,6 +47,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Sunset Ember palette
+        ember: {
+          500: "hsl(var(--ember-500))",
+          600: "hsl(var(--ember-600))",
+          glow: "hsl(var(--ember-glow))",
+        },
+        'sun-gold': "hsl(var(--sun-gold))",
+        'rose-glow': "hsl(var(--rose-glow))",
+        'text-hero': "hsl(var(--text-hero))",
+        'text-dim': "hsl(var(--text-dim))",
+        'text-muted': "hsl(var(--text-muted))",
+        'ok-mint': "hsl(var(--ok-mint))",
+        'surface-graphite': "hsl(var(--surface-graphite))",
+        'surface-elevated': "hsl(var(--surface-elevated))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -80,10 +94,42 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          }
+        },
+        "glow-pulse": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px rgba(255, 122, 0, 0.4)"
+          },
+          "50%": {
+            boxShadow: "0 0 30px rgba(255, 122, 0, 0.7)"
+          }
+        },
+        "ember-gradient": {
+          "0%": {
+            backgroundPosition: "0% 50%"
+          },
+          "50%": {
+            backgroundPosition: "100% 50%"
+          },
+          "100%": {
+            backgroundPosition: "0% 50%"
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.6s ease-out",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "ember-gradient": "ember-gradient 3s ease infinite",
       },
     },
   },
